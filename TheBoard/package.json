@@ -6,5 +6,9 @@
   "author": {
     "name": "Alex",
     "email": ""
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "underscore": "^1.8.3"
   }
 }
