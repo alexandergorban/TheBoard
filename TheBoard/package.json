@@ -1,10 +1,10 @@
 {
   "name": "TheBoard",
   "version": "0.0.0",
-  "description": "TheBoard",
+  "description": "A message board based on sticky notes.",
   "main": "server.js",
   "author": {
-    "name": "Win10x64en",
+    "name": "Alex",
     "email": ""
   }
 }
