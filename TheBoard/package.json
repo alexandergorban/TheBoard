@@ -12,6 +12,7 @@
     "ejs-locals": "^1.0.2",
     "express": "^4.14.0",
     "jade": "^1.11.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "vash": "^0.12.2"
   }
 }
