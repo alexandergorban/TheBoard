@@ -1,0 +1,10 @@
+{
+  "name": "TheBoard",
+  "version": "0.0.0",
+  "description": "TheBoard",
+  "main": "server.js",
+  "author": {
+    "name": "Win10x64en",
+    "email": ""
+  }
+}
