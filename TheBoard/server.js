@@ -18,6 +18,19 @@ app.get("/api/users",
     res.send({ name: "Alex", isValid: true, group: "Admin" });
 });
 
+app.get("/api/sql",
+    function (req, res) {
+    var msnodesql = require("node-sqlserver-unofficial");
+    var connString = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TheWorldDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+    
+    msnodesql.query(connString,
+            "SELECT * FROM Trips",
+            function (err, results) {
+        // Error Handling
+        res.send(results);
+    });
+});
+
 var server = http.createServer(app);
 
 server.listen(3000);
