@@ -7,8 +7,13 @@
             function (req, res) {
             
             data.getNoteCategories(function (err, results) {
-                res.render("index", { title: "The Board", error: err, categories: results });
-
+                res.render("index",
+                {
+                    title: "The Board", 
+                    error: err, 
+                    categories: results, 
+                    newCatError: req.flash("newCatName")
+                });
             });
 
         });
@@ -21,6 +26,7 @@
                 if (err) {
                     // Handle Error
                     console.log(err);
+                    req.flash("newCatName", err);
                     res.redirect("/");
                 } else {
                     res.redirect("/notes/" + categoryName);

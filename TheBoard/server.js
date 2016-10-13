@@ -2,13 +2,19 @@
 var express = require("express");
 var app = express();
 var controllers = require("./controllers");
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
+var flash = require("connect-flash");
+var session = require("express-session");
+var cookieParser = require("cookie-parser");
 
 // Setup the View Engine
 app.set("view engine", "vash");
 
 // Opt into Services
 app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(session({ secret: "STheBoard" }));
+app.use(flash());
 
 // Set the public static resource folder
 app.use(express.static(__dirname + "/public"));
