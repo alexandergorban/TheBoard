@@ -20,6 +20,8 @@
                     next(null, theDb);
                 }
             });
+        } else {
+            next(null, theDb);
         }
     }
 

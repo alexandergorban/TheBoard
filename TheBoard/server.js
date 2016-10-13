@@ -2,9 +2,13 @@
 var express = require("express");
 var app = express();
 var controllers = require("./controllers");
+var bodyParser = require('body-parser');
 
 // Setup the View Engine
 app.set("view engine", "vash");
+
+// Opt into Services
+app.use(bodyParser.urlencoded());
 
 // Set the public static resource folder
 app.use(express.static(__dirname + "/public"));
