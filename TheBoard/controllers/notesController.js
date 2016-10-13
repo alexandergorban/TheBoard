@@ -4,6 +4,7 @@
     var data = require("../data");
     
     notesController.init = function (app) {
+        
         app.get("/api/notes/:categoryName",
             function (req, res) {
             
@@ -20,6 +21,24 @@
             });
 
         });
+        
+        app.post("/api/notes/:categoryName", function (req, res) {
+            
+            var categoryName = req.params.categoryName;
+
+            var noteToInsert = {
+                note: req.body.note,
+                color: req.body.color,
+                author: "AngularClass"
+            };
+            
+            data.addNote(categoryName,
+                noteToInsert,
+                function (err) {
+
+            });
+        });
+
     };
 
 })(module.exports);

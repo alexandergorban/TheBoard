@@ -12,6 +12,7 @@ app.set("view engine", "vash");
 
 // Opt into Services
 app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({ secret: "STheBoard" }));
 app.use(flash());
