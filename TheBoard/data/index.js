@@ -4,7 +4,19 @@
     var database = require("./database");
     
     data.getNoteCategories = function (next) {
-        next(null, seedData.initialNotes);
+        database.getDb(function (err, db) {
+            if (err) {
+                next(err, null);
+            } else {
+                db.notes.find().sort({ name: 1 }).toArray(function (err, results) {
+                    if (err) {
+                        next(err, null);
+                    } else {
+                        next(null, results);
+                    }
+                });
+            }
+        });
     };
     
     function seedDatabase() {
@@ -33,7 +45,7 @@
             }
         });
     }
-
+    
     seedDatabase();
 
 })(module.exports);
