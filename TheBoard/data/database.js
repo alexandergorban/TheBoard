@@ -14,7 +14,8 @@
                     next(err, null);
                 } else {
                     theDb = {
-                        db: db
+                        db: db,
+                        notes: db.collection("notes")
                     };
                     next(null, theDb);
                 }
