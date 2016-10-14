@@ -10,9 +10,13 @@
         io.sockets.on("connection",
             function (socket) {
             console.log("socket was connected");
+            socket.on("join category",
+                    function (category) {
+                socket.join(category);
+            });
             socket.on("newNote",
                     function (data) {
-                socket.broadcast.emit("broadcast note", data.note);
+                socket.broadcast.to(data.category).emit("broadcast note", data.note);
             });
         });
     };

@@ -24,6 +24,9 @@
             });
             
             var socket = io.connect();
+            
+            socket.emit("join category", categoryName);
+            
             socket.on("broadcast note",
                 function (note) {
                 $scope.notes.push(note);
