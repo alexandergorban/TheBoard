@@ -10,7 +10,10 @@
         io.sockets.on("connection",
             function (socket) {
             console.log("socket was connected");
-            socket.emit("showThis", "this is from the server");
+            socket.on("newNote",
+                    function (data) {
+                socket.broadcast.emit("broadcast note", data.note);
+            });
         });
     };
 
