@@ -42,6 +42,31 @@
         app.use(passport.initialize());
         app.use(passport.session());
         
+        app.get("/login",
+            function (req, res) {
+            res.render("login", { title: "Login to The Board", message: req.flash("loginError") });
+        });
+        
+        app.post("/login",
+            function (req, res, next) {
+            var authFunction = passport.authenticate("local",
+                    function (err, user, info) {
+                if (err) {
+                    next(err);
+                } else {
+                    req.logIn(user,
+                                function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.redirect("/");
+                        }
+                    });
+                }
+            });
+            authFunction(req, res, next);
+        });
+        
         app.get("/register",
             function (req, res) {
             res.render("register", { title: "Register for The Board", message: req.flash("registrationError") });

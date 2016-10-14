@@ -55,6 +55,7 @@
     <Content Include="views\jade\index.jade" />
     <Content Include="views\jade\layout.jade" />
     <Content Include="views\layout.vash" />
+    <Content Include="views\login.vash" />
     <Content Include="views\notes.vash" />
     <Content Include="views\register.vash" />
   </ItemGroup>
