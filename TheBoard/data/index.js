@@ -1,4 +1,6 @@
-﻿(function (data) {
+﻿// data/index.js
+
+(function (data) {
     
     var seedData = require("./seedData");
     var database = require("./database");
@@ -80,6 +82,16 @@
             }
         });
     }
+    
+    data.getUser = function (username, next) {
+        database.getDb(function (err, db) {
+            if (err) {
+                next(err);
+            } else {
+                db.users.findOne({ username: username }, next);
+            }
+        });
+    };
     
     function seedDatabase() {
         database.getDb(function (err, db) {

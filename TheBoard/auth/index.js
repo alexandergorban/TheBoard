@@ -4,6 +4,23 @@
     var data = require("../data");
     var hasher = require("./hasher");
     
+    var passport = require("passport");
+    var localStrategy = require("passport-local").Strategy;
+    
+    function userVerify(username, password, next) {
+        data.getUser(username,
+            function (err, user) {
+            if (!err && user) {
+                var testHash = hasher.computeHash(password, user.salt);
+                if (testHash === user.passwordHash) {
+                    next(null, user);
+                    return;
+                }
+            }
+            next(null, false, { message: "Invalid Credentials." });
+        });
+    }
+    
     auth.init = function (app) {
         
         app.get("/register",
