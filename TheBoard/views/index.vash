@@ -9,7 +9,7 @@
 			<div class="list-group col-lg-6">
 				@model.categories.forEach(function (category) {
 					<div>
-						<a href="#" class="list-group-item list-group-item-info">
+						<a href="/notes/@category.name" class="list-group-item list-group-item-info">
 							<span class="badge">@(category.notes ? category.notes.length : 0)</span>
 						@category.name</a>
 					</div>
