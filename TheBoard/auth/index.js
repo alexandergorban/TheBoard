@@ -1,4 +1,5 @@
 ﻿// auth/index.js
+
 (function (auth) {
     
     var data = require("../data");
@@ -22,6 +23,24 @@
     }
     
     auth.init = function (app) {
+        
+        // Setup passport authentication
+        passport.use(new localStrategy(userVerify));
+        passport.serializeUser(function (user, next) {
+            next(null, user.username);
+        });
+        passport.deserializeUser(function (key, next) {
+            data.getUser(key,
+                function (err, user) {
+                if (err) {
+                    next(null, false, { message: "Failed to retrieve user" });
+                } else {
+                    next(null, user);
+                }
+            });
+        });
+        app.use(passport.initialize());
+        app.use(passport.session());
         
         app.get("/register",
             function (req, res) {
